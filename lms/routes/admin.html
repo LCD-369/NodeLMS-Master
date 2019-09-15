@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>LMS Admin Page</title>
+</head>
+
+<body>
+	<div class="hero1">
+		<div class="inline-block">
+			<header class="header-area">
+				<nav class="navbar navbar-expand-lg navbar-expand-md">
+					<div class="nav-switch">
+						<i class="fa fa-bars"></i>
+					</div>
+					<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarTogglerDemo03" aria-expanded="false">
+						<span class="text-white text-center lead">
+							<i class="fas fa-caret-down"></i>
+						</span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarCollapse">
+						<nav class="nav-menu">
+							<ul class="text-center">
+								<li class="nav-item active"><a href="/admin.html" class="text-white">Administrator</a></li>
+								<li class="nav-item"><a href="#" class="text-white">Borrower</a></li>
+								<li class="nav-item"><a href="#" class="text-white">Librarian</a></li>
+							</ul>
+						</nav>
+					</div>
+				</nav>
+			</header>
+		</div>
+		<div class="container">
+			<h1 class="p-4" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)); border-radius: 40px; color: #f7f7f7; margin-left: 15%; margin-right: 15%">GCIT <span style="color: #ca3e47">L</span>ibrary <span
+					style="color: #ca3e47">M</span>anagement <span style="color: #ca3e47">S</span>ystem</h1>
+		</div>
+		<br />
+	</div>
+	<div class="inline-block" style="margin-top: -10px; background: #313131; border-bottom: solid; border-color: #ca3e47; color: #f7f7f7">
+		<h2 class="text-center p-3">Administrator Page</h2>
+	</div>
+	<!-- Instructions -->
+	<div class="container text-center">
+		<p style="font-size: 20px">
+			Select from the list of entities below to begin
+		</p>
+	</div>
+	<!-- Author -->
+	<div class="container mt-2 wow fadeInDown">
+		<div class="row align-items-center">
+			<button class="btn btn-block btn-raised m-auto" type="button" data-toggle="collapse" data-target="#authorCollapse"
+			aria-expanded="false" aria-controls="authorCollapse" style="font-weight: 700; font-size: 30px; color: #ca3e47">Author<br /><span>
+					<i class="fas fa-angle-down"></i>
+				</span></button>
+		</div>
+	</div>
+	<hr />
+	<div class="collapse" id="authorCollapse">
+		<div class="formWindow">
+			<div class="container" onmouseover="effectOn('author')" onmouseout="effectOff('author')">
+				<div class="card p-4 bg-white shadow" id="author">
+					<div class="card-body">
+						<!-- ADD -->
+						<form action="/api/author" id="authorAdd" method="post">
+							<h4 class="text-center">Author</h4>
+							<div style="border-bottom: solid; border-bottom-width: 2px; border-color: #ca3e47; width: 5%; margin: auto"></div>
+							<h5 class="text-center text-dark mt-2 mb-3" style="color: #222831">Enter the author information below and then select the 'add' button below.</h5>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="ID" name="authorId" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Name" name="authorName" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Add" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+							</div>
+						</form>
+						<!-- UPDATE -->
+						<form action="send" id="authorUpdate">
+							<h4 class="text-center">Author</h4>
+							<div style="border-bottom: solid; border-bottom-width: 2px; border-color: #ca3e47; width: 5%; margin: auto"></div>
+							<h5 class="text-center text-dark mt-2 mb-3" style="color: #222831">Enter the author information below and select appropriate action.</h5>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="ID" name="authorId" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Name" name="authorName" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Update" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+							</div>
+						</form>
+						<!-- DELETE -->
+						<form action="send" id="authorDelete">
+							<h4 class="text-center">Author</h4>
+							<div style="border-bottom: solid; border-bottom-width: 2px; border-color: #ca3e47; width: 5%; margin: auto"></div>
+							<h5 class="text-center text-dark mt-2 mb-3" style="color: #222831">Enter the author information below and select appropriate action.</h5>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="ID" name="authorId" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Name" name="authorName" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Delete" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+							</div>
+						</form>
+						<!-- GET TABLE -->
+						<div id="server-results"><!-- For server results --></div>
+						<div class="container" style="width: 80%">
+						<table class="table table-hover text-center">
+							<thead>
+								<tr>
+									<th scope="col align-self-center">#ID</th>
+									<th scope="col align-self-center">Name</th>
+								</tr>
+							</thead>
+							<tbody id="author_body">
+      				</tbody>
+						</table>
+						<div id="pager" class="justify-content-center text-center m-auto">
+      				<ul id="pagination" class="pagination justify-content-center">
+      				</ul>
+					  </div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Publisher -->
+	<div class="container mt-2 wow fadeInDown">
+		<div class="row align-items-center text-center">
+			<button class="btn btn-block btn-raised m-auto" type="button" data-toggle="collapse" data-target="#publisherCollapse" aria-expanded="false" aria-controls="publisherCollapse" style="font-weight: 700; font-size: 30px; color: #ca3e47">Publisher<br /><span>
+					<i class="fas fa-angle-down"></i>
+				</span></button>
+		</div>
+	</div>
+	<hr />
+	<div class="collapse" id="publisherCollapse">
+		<div class="formWindow">
+			<div class="container" onmouseover="effectOn('publisher')" onmouseout="effectOff('publisher')">
+				<div class="card p-4 bg-white shadow" id="publisher">
+					<div class="card-body">
+						<form method="post" modelAttribute="contact" action="send">
+							<h4 class="text-center">Publisher</h4>
+							<div style="border-bottom: solid; border-bottom-width: 2px; border-color: #ca3e47; width: 5%; margin: auto"></div>
+							<h5 class="text-center text-dark mt-2 mb-3" style="color: #222831">Enter the publisher information below and select appropriate action.</h5>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="ID" name="publisherId" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Publisher Name" name="publisherName" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Address" name="publisherAddress" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Phone Number" name="publisherPhone" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Add" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Update" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Delete" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+							</div>
+						</form>
+						<table class="table text-center">
+							<thead>
+								<tr>
+									<th scope="col">#ID</th>
+									<th scope="col">Name</th>
+									<th scope="col">Adress</th>
+									<th scope="col">Phone</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">1</th>
+									<td>Bloomsbury Books</td>
+									<td>London</td>
+									<td>233-345-4354</td>
+								</tr>
+								<tr>
+									<th scope="row">2</th>
+									<td>Hyperion</td>
+									<td>New York City</td>
+									<td>222-443-7876</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Book -->
+	<div class="container mt-2 wow fadeInDown">
+		<div class="row align-items-center">
+			<button class="btn btn-block btn-raised m-auto" type="button" data-toggle="collapse" data-target="#bookCollapse" aria-expanded="false"
+			aria-controls="bookCollapse" style="font-weight: 700; font-size: 30px; color: #ca3e47">Book<br /><span>
+					<i class="fas fa-angle-down"></i>
+				</span></button>
+		</div>
+	</div>
+	<hr />
+	<div class="collapse" id="bookCollapse">
+		<div class="formWindow">
+			<div class="container" onmouseover="effectOn('book')" onmouseout="effectOff('book')">
+				<div class="card p-4 bg-white shadow" id="book">
+					<div class="card-body">
+						<form method="post" modelAttribute="contact" action="send">
+							<h4 class="text-center">Book</h4>
+							<div style="border-bottom: solid; border-bottom-width: 2px; border-color: #ca3e47; width: 5%; margin: auto"></div>
+							<h5 class="text-center text-dark mt-2 mb-3" style="color: #222831">Enter the book information below and select appropriate action.</h5>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="ID" name="bookId" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Title" name="title" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Author ID" name="authorId" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Publisher ID" name="pubId" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Add" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Update" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Delete" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+							</div>
+						</form>
+						<table class="table text-center">
+							<thead>
+								<tr>
+									<th scope="col">#ID</th>
+									<th scope="col">Title</th>
+									<th scope="col">Author ID</th>
+									<th scope="col">Publisher ID</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">1</th>
+									<td>The Hunger Games</td>
+									<td>2</td>
+									<td>2</td>
+								</tr>
+								<tr>
+									<th scope="row">2</th>
+									<td>American Gods</td>
+									<td>4</td>
+									<td>3</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Library Branch -->
+	<div class="container mt-2 wow fadeInDown">
+		<div class="row align-items-center">
+			<button class="btn btn-block btn-raised m-auto" type="button" data-toggle="collapse" data-target="#branchCollapse"
+			aria-expanded="false" aria-controls="branchCollapse" style="font-weight: 700; font-size: 30px; color: #ca3e47">Library Branch<br /><span>
+					<i class="fas fa-angle-down"></i>
+				</span></button>
+		</div>
+	</div>
+	<hr />
+	<div class="collapse" id="branchCollapse">
+		<div class="formWindow">
+			<div class="container" onmouseover="effectOn('branch')" onmouseout="effectOff('branch')">
+				<div class="card p-4 bg-white shadow" id="branch">
+					<div class="card-body">
+						<form method="post" modelAttribute="contact" action="send">
+							<h4 class="text-center">Library Branch</h4>
+							<div style="border-bottom: solid; border-bottom-width: 2px; border-color: #ca3e47; width: 5%; margin: auto"></div>
+							<h5 class="text-center text-dark mt-2 mb-3" style="color: #222831">Enter the Library Branch information below and select appropriate action.</h5>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="ID" name="branchId" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Name" name="branchName" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Address" name="branchAddress" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Add" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Update" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Delete" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+							</div>
+						</form>
+						<table class="table text-center">
+							<thead>
+								<tr>
+									<th scope="col">#ID</th>
+									<th scope="col">Name</th>
+									<th scope="col">Address</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">1</th>
+									<td>Branch 1</td>
+									<td>Mock Adress 123</td>
+								</tr>
+								<tr>
+									<th scope="row">2</th>
+									<td>Branch 2</td>
+									<td>Mock Address 1234</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Borrower -->
+	<div class="container mt-2 wow fadeInDown">
+		<div class="row align-items-center">
+			<button class="btn btn-block btn-raised m-auto" type="button" data-toggle="collapse" data-target="#borrowerCollapse"
+			aria-expanded="false" aria-controls="borrowerCollapse" style="font-weight: 700; font-size: 30px; color: #ca3e47">Borrower<br /><span>
+					<i class="fas fa-angle-down"></i>
+				</span></button>
+		</div>
+	</div>
+	<hr />
+	<div class="collapse" id="borrowerCollapse">
+		<div class="formWindow">
+			<div class="container" onmouseover="effectOn('borrower')" onmouseout="effectOff('borrower')">
+				<div class="card p-4 bg-white shadow" id="borrower">
+					<div class="card-body">
+						<form method="post" modelAttribute="contact" action="send">
+							<h4 class="text-center">Borrower</h4>
+							<div style="border-bottom: solid; border-bottom-width: 2px; border-color: #ca3e47; width: 5%; margin: auto"></div>
+							<h5 class="text-center text-dark mt-2 mb-3" style="color: #222831">Enter the borrower information below and select appropriate action.</h5>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Card Number" name="cardNo" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Name" name="name" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Address" name="address" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Phone Number" name="phone" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Add" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Update" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Delete" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+							</div>
+						</form>
+						<table class="table text-center">
+							<thead>
+								<tr>
+									<th scope="col">Card Number</th>
+									<th scope="col">Name</th>
+									<th scope="col">Address</th>
+									<th scope="col">Phone</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">1</th>
+									<td>Mark</td>
+									<td>345 trew rd</td>
+									<td>210-543-5647</td>
+								</tr>
+								<tr>
+									<th scope="row">2</th>
+									<td>Jacob</td>
+									<td>123 tcv rd</td>
+									<td>223-324-4444</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Override Date -->
+	<div class="container mt-2 wow fadeInDown">
+		<div class="row align-items-center">
+			<button class="btn btn-block btn-raised m-auto" type="button" data-toggle="collapse" data-target="#overrideCollapse"
+			aria-expanded="false" aria-controls="overrideCollapse" style="font-weight: 700; font-size: 30px; color: #ca3e47">Due Date<br /><span>
+					<i class="fas fa-angle-down"></i>
+				</span></button>
+		</div>
+	</div>
+	<hr />
+	<div class="collapse" id="overrideCollapse">
+		<div class="formWindow">
+			<div class="container" onmouseover="effectOn('override')" onmouseout="effectOff('override')">
+				<div class="card p-4 bg-white shadow" id="override">
+					<div class="card-body">
+						<form method="post" modelAttribute="contact" action="send">
+							<h4 class="text-center">Override Due-Date</h4>
+							<div style="border-bottom: solid; border-bottom-width: 2px; border-color: #ca3e47; width: 5%; margin: auto"></div>
+							<h5 class="text-center text-dark mt-2 mb-3" style="color: #222831">Enter the book loan information below and select appropriate action.</h5>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Book ID" name="bookId" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Branch ID" name="branchId" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Card Number" name="cardNo" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 m-auto">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Due Date" name="dueDate" required style="border-color: #393e46">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3 col-md-3 col-lg-3 m-auto">
+									<div class="form-group">
+										<input type="submit" value="Override" class="btn btn-block" style="background-color: #313131; font-weight: 400; color: #f4f4f4" data-toggle="modal" data-target="#myModal">
+									</div>
+								</div>
+							</div>
+						</form>
+						<table class="table text-center">
+							<thead>
+								<tr>
+									<th scope="col">Card Number</th>
+									<th scope="col">Book ID</th>
+									<th scope="col">Branch ID</th>
+									<th scope="col">Date Out</th>
+									<th scope="col">Due Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">1</th>
+									<td>2</td>
+									<td>2</td>
+									<td>2019-06-12</td>
+									<td>2019-06-20</td>
+								</tr>
+								<tr>
+									<th scope="row">2</th>
+									<td>3</td>
+									<td>3</td>
+									<td>2019-07-16</td>
+									<td>2019-07-26</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Dark/Light Mode -->
+	<div class="container mb-2 mt-4">
+		<div class="row justify-content-center">
+			<div class="col-auto align-self-center text-center">
+				<button class="btn btn-sm btn-raised" style="background-color: #313131; font-weight: 400; color: #ca3e47" onclick="darkMode()">Dark Mode</button>
+			</div>
+			<div class="col-auto align-self-center text-center">
+				<button class="btn btn-sm btn-raised" style="background-color: #313131; font-weight: 400; color: #ca3e47" onclick="darkModeOff()">Light Mode</button>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<footer class="fixed">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col">
+					<p class="text-center pt-2 lead">
+						Created by Team Alpha
+					</p>
+					<p class="text-center">
+						Copyright <span id="year"></span> Team Alpha - All Rights Reserved.
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer End -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+	<script src="js/jquery.twbsPagination.js"></script>
+	<script src="js/style.js"></script>
+</body>
+
+</html>

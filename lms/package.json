@@ -1,0 +1,28 @@
+{
+  "name": "lms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^5.1.1",
+    "nodemon": "^1.19.2",
+    "webpack": "^4.39.3"
+  },
+  "scripts": {
+    "start": "nodemon --exec babel-node --presets babel-preset-env ./main.js",
+    "test": "mocha --require @babel/register test/*.js"
+  },
+  "author": "Louis",
+  "license": "ISC"
+}
